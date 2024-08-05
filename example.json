@@ -1,0 +1,37 @@
+{
+  "llm_flow_id": "LLM_FLW_01HSEZDCTRGPSX11DDQ123KKXZ",
+  "client_id_version": "TCI8abd9a5daf7354d5b5ef5ca2822a2079:1.0",
+  "client_id": "TCI8abd9a5daf7354d5b5ef5ca2822a2079",
+  "default_globals": {},
+  "name": "example",
+  "starting_state": "react_orchestrator",
+  "states": [
+    {
+      "chat_history": "{chat_history}",
+      "llm_model": "gpt-4o",
+      "outputs": {
+        "override_global": {
+          "{last_response}": "{self.response}"
+        }
+      },
+      "system_prompt": "Say hi!",
+      "temperature": 0.8,
+      "type": "llm",
+      "name": "react_orchestrator",
+      "routes": [
+        {
+          "next_node": "example_message",
+          "default": true
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "acceptance_state": true,
+      "message_user_intention": "CONTINUE",
+      "message": "{last_response}",
+      "name": "example_message"
+    }
+  ],
+  "version": "1.0"
+}
